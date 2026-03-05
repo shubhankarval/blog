@@ -1,0 +1,8 @@
+{
+  "singleQuote": true,
+  "printWidth": 100,
+  "trailingComma": "es5",
+  "endOfLine": "auto",
+  "tailwindStylesheet": "./src/app/globals.css",
+  "plugins": ["prettier-plugin-tailwindcss"]
+}
