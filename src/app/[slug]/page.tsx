@@ -9,7 +9,7 @@ export default async function Page({ params }: { params: Promise<{ slug: string 
   const { default: Blog } = await import(`@/blogs/${slug}.mdx`);
 
   return (
-    <div className="mx-auto px-5 py-10 md:max-w-xl lg:max-w-3xl">
+    <div className="mx-auto px-6 py-10 md:max-w-xl lg:max-w-3xl">
       <Blog />
     </div>
   );

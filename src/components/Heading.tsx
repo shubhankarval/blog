@@ -12,10 +12,11 @@ export default function Code({ level, children }: HeadingProps) {
 
   return (
     <HeadingTag
-      className={cn('group relative mt-8 mb-3 text-lg font-semibold', {
+      className={cn('group relative mt-8 mb-3 font-semibold', {
         'text-3xl': level === 2,
         'text-2xl': level === 3,
         'text-xl': level === 4,
+        'text-lg': level === 5,
       })}
       id={id}
     >
@@ -31,5 +32,7 @@ export default function Code({ level, children }: HeadingProps) {
 
 const sanitizeId = (text: string) =>
   text
-    .replace(/\s+/g, '-') // Replace spaces with dashes
-    .replace(/[^a-z0-9A-Z\-]/g, ''); // Remove all non-alphanumeric characters except dashes
+    .toLowerCase()
+    .replace(/[^a-z0-9 ]+/g, '') // Remove all non-alphanumeric except spaces
+    .trim()
+    .replace(/\s+/g, '-'); // Replace spaces (and runs of spaces) with dashes
