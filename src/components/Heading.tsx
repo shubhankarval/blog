@@ -1,14 +1,14 @@
 import React from 'react';
-import { cn, extractText } from '@lib/utils';
+import { cn } from '@lib/utils';
 
 interface HeadingProps {
   level: number;
-  children: React.ReactNode;
+  children: string;
 }
 
 export default function Code({ level, children }: HeadingProps) {
   const HeadingTag = `h${level}` as keyof React.JSX.IntrinsicElements; // Dynamically select the heading tag
-  const id = sanitizeId(extractText(children)); // Generate an ID based on the text content
+  const id = sanitizeId(children); // Generate an ID based on the text content
 
   return (
     <HeadingTag

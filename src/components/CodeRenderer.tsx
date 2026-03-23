@@ -1,13 +1,13 @@
 import { codeToTokens, type BundledLanguage, type SpecialLanguage } from 'shiki';
 
-import CodeShiki from './CodeShiki';
+import Code from './Code';
 
 interface CodeProps {
   children: { props: { children: string; className?: string } };
   lines?: (string | number)[];
 }
 
-export default async function CodeShikiRenderer({ children, lines }: CodeProps) {
+export default async function CodeRenderer({ children, lines }: CodeProps) {
   const code = children.props.children.trimEnd();
   const lang =
     (children.props.className?.replace('language-', '') as BundledLanguage) ||
@@ -18,5 +18,5 @@ export default async function CodeShikiRenderer({ children, lines }: CodeProps) 
     theme: 'vitesse-dark',
   });
 
-  return <CodeShiki tokens={JSON.parse(JSON.stringify(tokens))} lines={lines} />;
+  return <Code tokens={JSON.parse(JSON.stringify(tokens))} lines={lines} />;
 }

@@ -1,25 +1,18 @@
 'use client';
-import { type ReactNode } from 'react';
-import { CodeBlock } from 'react-code-block';
-import { themes } from 'prism-react-renderer';
+import { type TokensResult } from 'shiki';
+import { CodeBlock } from 'react-code-block/shiki';
 
-import { cn, extractText } from '@lib/utils';
+import { cn } from '@lib/utils';
 
 interface CodeProps {
-  children: ReactNode;
-  lang?: string;
+  tokens: TokensResult;
   lines?: (string | number)[];
 }
 
-export default function Code({ children, lang, lines }: CodeProps) {
+export default function Code({ tokens, lines }: CodeProps) {
   return (
-    <CodeBlock
-      code={extractText(children)}
-      language={lang || ''}
-      lines={lines}
-      theme={themes.gruvboxMaterialDark}
-    >
-      <CodeBlock.Code className={'my-7 rounded-xl bg-[#181818] py-6 font-mono shadow-lg'}>
+    <CodeBlock tokens={tokens} lines={lines}>
+      <CodeBlock.Code className={'my-7 rounded-xl bg-code-block py-6 font-mono shadow-lg'}>
         {({ isLineHighlighted }) => (
           <div
             className={cn(
@@ -38,6 +31,7 @@ export default function Code({ children, lang, lines }: CodeProps) {
           </div>
         )}
       </CodeBlock.Code>
+      <pre></pre>
     </CodeBlock>
   );
 }
