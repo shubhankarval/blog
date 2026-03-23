@@ -1,6 +1,6 @@
 import type { MDXComponents } from 'mdx/types';
 import Heading from '@components/Heading';
-import Code from '@components/Code';
+import Code from '@components/CodeShikiRenderer';
 
 export function useMDXComponents(components: MDXComponents): MDXComponents {
   return {

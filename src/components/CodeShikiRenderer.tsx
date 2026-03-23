@@ -1,20 +1,20 @@
-import { ReactNode } from 'react';
-import { codeToTokens, type BundledLanguage } from 'shiki';
+import { codeToTokens, type BundledLanguage, type SpecialLanguage } from 'shiki';
 
-import { extractText } from '@lib/utils';
 import CodeShiki from './CodeShiki';
 
 interface CodeProps {
-  children: ReactNode;
-  language: BundledLanguage;
+  children: { props: { children: string; className?: string } };
   lines?: (string | number)[];
 }
 
-export default async function CodeShikiRenderer({ children, language = 'js', lines }: CodeProps) {
-  const code = extractText(children).trimEnd();
+export default async function CodeShikiRenderer({ children, lines }: CodeProps) {
+  const code = children.props.children.trimEnd();
+  const lang =
+    (children.props.className?.replace('language-', '') as BundledLanguage) ||
+    ('txt' as SpecialLanguage);
 
   const tokens = await codeToTokens(code, {
-    lang: language,
+    lang: lang,
     theme: 'vitesse-dark',
   });
 

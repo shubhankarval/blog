@@ -7,15 +7,15 @@ import { cn, extractText } from '@lib/utils';
 
 interface CodeProps {
   children: ReactNode;
-  language?: string;
+  lang?: string;
   lines?: (string | number)[];
 }
 
-export default function Code({ children, language = 'js', lines }: CodeProps) {
+export default function Code({ children, lang, lines }: CodeProps) {
   return (
     <CodeBlock
       code={extractText(children)}
-      language={language}
+      language={lang || ''}
       lines={lines}
       theme={themes.gruvboxMaterialDark}
     >

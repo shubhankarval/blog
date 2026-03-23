@@ -10,10 +10,9 @@ interface CodeProps {
 }
 
 export default function Code({ tokens, lines }: CodeProps) {
-  //   console.log('Tokens:', tokens);
   return (
     <CodeBlock tokens={tokens} lines={lines}>
-      <CodeBlock.Code className={'my-7 rounded-xl bg-[#181818] py-6 font-mono shadow-lg'}>
+      <CodeBlock.Code className={'my-7 rounded-xl bg-code-block py-6 font-mono shadow-lg'}>
         {({ isLineHighlighted }) => (
           <div
             className={cn(
@@ -32,6 +31,7 @@ export default function Code({ tokens, lines }: CodeProps) {
           </div>
         )}
       </CodeBlock.Code>
+      <pre></pre>
     </CodeBlock>
   );
 }
