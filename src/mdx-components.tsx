@@ -13,7 +13,7 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
     p: ({ children }) => <p className="mb-2">{children}</p>,
     ol: ({ children }) => <ol className="mb-2 ml-4 list-decimal">{children}</ol>,
     ul: ({ children }) => <ul className="mb-2 ml-3 list-disc">{children}</ul>,
-    pre: (props) => <Code {...props}>{props.children}</Code>,
+    pre: (props) => <Code {...props} />,
     ...components,
   };
 }
