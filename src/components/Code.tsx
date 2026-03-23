@@ -12,18 +12,19 @@ interface CodeProps {
 export default function Code({ tokens, lines }: CodeProps) {
   return (
     <CodeBlock tokens={tokens} lines={lines}>
-      <CodeBlock.Code className={'my-7 rounded-xl bg-code-block py-6 font-mono shadow-lg'}>
+      <CodeBlock.Code className="my-7 rounded-lg bg-code-block py-5 font-code text-sm shadow-lg">
         {({ isLineHighlighted }) => (
           <div
             className={cn(
               'table-row',
-              lines && (isLineHighlighted ? 'bg-violet-500/30' : 'opacity-60')
+              lines && (isLineHighlighted ? 'bg-code-block-hg' : 'opacity-70')
             )}
           >
             <CodeBlock.LineNumber
-              className={`table-cell pr-4 pl-6 text-right text-sm select-none ${
-                isLineHighlighted ? 'text-gray-300' : 'text-gray-500'
-              }`}
+              className={cn(
+                'table-cell pr-4 pl-6 text-right text-xs select-none',
+                isLineHighlighted ? 'text-gray-500' : 'text-gray-600'
+              )}
             />
             <CodeBlock.LineContent className="table-cell w-full pr-6">
               <CodeBlock.Token />
@@ -31,7 +32,6 @@ export default function Code({ tokens, lines }: CodeProps) {
           </div>
         )}
       </CodeBlock.Code>
-      <pre></pre>
     </CodeBlock>
   );
 }
