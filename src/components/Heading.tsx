@@ -21,7 +21,17 @@ export default function Code({ level, children }: HeadingProps) {
       id={id}
     >
       <a className="flex items-center" href={`#${id}`}>
-        <span className="absolute -left-8 opacity-0 transition-opacity group-hover:opacity-30">
+        <span
+          className={cn(
+            'absolute text-primary opacity-0 transition-opacity group-hover:opacity-70',
+            {
+              '-left-8': level === 2,
+              '-left-7': level === 3,
+              '-left-6': level === 4,
+              '-left-5': level === 5 || level === 6,
+            }
+          )}
+        >
           #
         </span>
         {children}

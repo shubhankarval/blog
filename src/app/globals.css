@@ -5,6 +5,7 @@
   --foreground: hsl(60deg 100% 98.04% / 86%);
   --primary: hsl(187.4deg 46.5% 69.22%);
   --muted: hsl(240deg 33.33% 94.12% / 60%);
+  --code: hsla(210, 14%, 46%, 0.16);
   --code-block: hsl(0, 0%, 7%);
   --code-block-hg: hsla(210, 14%, 46%, 0.16); /* Highlighted Code */
 }
@@ -14,12 +15,13 @@
   --color-foreground: var(--foreground);
   --color-primary: var(--primary);
   --color-muted: var(--muted);
+  --color-code: var(--code);
   --color-code-block: var(--code-block);
   --color-code-block-hg: var(--code-block-hg);
 
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
-  --font-code: var(--font-cascadia-code);
+  --font-code: var(--font-consolas);
 }
 
 body {

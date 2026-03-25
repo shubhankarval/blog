@@ -1,5 +1,7 @@
 import { Clock } from 'lucide-react';
 
+import { formatDate } from '@lib/utils';
+
 interface DetailsProps {
   time: number;
   date: string;
@@ -13,7 +15,7 @@ export default function Details({ time, date }: DetailsProps) {
         <div>{time} min read</div>
       </div>
       <div> • </div>
-      <div>{date}</div>
+      <div>{formatDate(date)}</div>
     </div>
   );
 }
