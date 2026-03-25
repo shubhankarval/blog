@@ -31,6 +31,12 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
         {children}
       </code>
     ),
+    blockquote: ({ children }) => (
+      <blockquote className="my-6 flex items-stretch overflow-hidden bg-background-soft text-foreground-soft">
+        <span className="w-2 bg-muted-primary" />
+        <div className="px-6 py-3 text-base leading-7 [&>p]:mb-0">{children}</div>
+      </blockquote>
+    ),
     ...components,
   };
 }
