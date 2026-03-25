@@ -1,7 +1,7 @@
 export const dynamicParams = false;
 
 export function generateStaticParams() {
-  return [{ slug: 'blog1' }];
+  return [{ slug: 'example' }];
 }
 
 export default async function Page({ params }: { params: Promise<{ slug: string }> }) {
