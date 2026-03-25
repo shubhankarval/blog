@@ -10,7 +10,6 @@
   --foreground-soft: hsl(60deg 100% 96% / 85%);
   --code: hsla(210, 14%, 46%, 0.16);
   --code-block: hsl(0, 0%, 7%);
-  --code-block-hg: hsla(210, 14%, 46%, 0.16); /* Highlighted Code */
 }
 
 @theme inline {
@@ -23,7 +22,6 @@
   --color-foreground-soft: var(--foreground-soft);
   --color-code: var(--code);
   --color-code-block: var(--code-block);
-  --color-code-block-hg: var(--code-block-hg);
 
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);

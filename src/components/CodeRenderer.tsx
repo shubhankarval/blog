@@ -18,5 +18,5 @@ export default async function CodeRenderer({ children, lines }: CodeProps) {
     theme: 'vitesse-dark',
   });
 
-  return <Code tokens={JSON.parse(JSON.stringify(tokens))} lines={lines} />;
+  return <Code tokens={JSON.parse(JSON.stringify(tokens))} code={code} lines={lines} />;
 }
