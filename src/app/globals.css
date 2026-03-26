@@ -12,6 +12,10 @@
   --code-block: hsl(0, 0%, 7%);
 }
 
+::selection {
+  background: hsl(187 40% 55% / 0.25);
+}
+
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
