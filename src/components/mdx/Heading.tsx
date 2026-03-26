@@ -13,10 +13,10 @@ export default function Code({ level, children }: HeadingProps) {
   return (
     <HeadingTag
       className={cn('group relative font-semibold', {
-        'mt-10 text-3xl': level === 2,
-        'mt-8 text-2xl': level === 3,
-        'mt-7 text-xl': level === 4,
-        'mt-6 text-lg': level === 5,
+        'mt-10 text-2xl sm:text-3xl': level === 2,
+        'mt-8 text-xl sm:text-2xl': level === 3,
+        'mt-7 text-lg sm:text-xl': level === 4,
+        'mt-6 sm:text-lg': level === 5,
       })}
       id={id}
     >
