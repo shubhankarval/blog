@@ -1,6 +1,6 @@
 import type { MDXComponents } from 'mdx/types';
-import Heading from '@components/Heading';
-import CodeRenderer from '@components/CodeRenderer';
+import Heading from '@components/mdx/Heading';
+import CodeRenderer from '@components/mdx/CodeRenderer';
 
 export function useMDXComponents(components: MDXComponents): MDXComponents {
   return {
