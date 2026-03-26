@@ -5,13 +5,13 @@ import Image from '@components/mdx/Image';
 
 export function useMDXComponents(components: MDXComponents): MDXComponents {
   return {
-    h1: ({ children }) => <h1 className="mb-3 text-4xl font-semibold">{children}</h1>,
+    h1: ({ children }) => <h1 className="text-4xl font-semibold">{children}</h1>,
     h2: ({ children }) => <Heading level={2}>{children}</Heading>,
     h3: ({ children }) => <Heading level={3}>{children}</Heading>,
     h4: ({ children }) => <Heading level={4}>{children}</Heading>,
     h5: ({ children }) => <Heading level={5}>{children}</Heading>,
     h6: ({ children }) => <Heading level={6}>{children}</Heading>,
-    p: ({ children }) => <p className="mb-2">{children}</p>,
+    p: ({ children }) => <p className="">{children}</p>,
     a: ({ children, href, id }) => (
       <a
         id={id}
@@ -23,16 +23,14 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
     ),
     strong: ({ children }) => <strong className="font-semibold">{children}</strong>,
     ol: ({ children }) => (
-      <ol className="my-5 ml-5 list-decimal space-y-1 leading-7 [&_ol]:my-0 [&_ol]:ml-7 [&_ul]:my-0 [&_ul]:ml-7">
-        {children}
-      </ol>
+      <ol className="ml-5 list-decimal space-y-1 leading-7 [&_ol]:ml-7 [&_ul]:ml-7">{children}</ol>
     ),
     ul: ({ children }) => (
-      <ul className="my-5 ml-5 list-disc space-y-1 leading-7 [&_ol]:my-0 [&_ol]:ml-7 [&_ul]:my-0 [&_ul]:ml-7 [&_ul]:list-[circle] [&_ul_ul]:list-disc">
+      <ul className="ml-5 list-disc space-y-1 leading-7 [&_ol]:ml-7 [&_ul]:ml-7 [&_ul]:list-[circle] [&_ul_ul]:list-disc">
         {children}
       </ul>
     ),
-    hr: () => <hr className="mt-5 mb-7 text-[#2e2e32]" />,
+    hr: () => <hr className="text-[#2e2e32]" />,
     img: ({ src, alt }) => <Image src={src} alt={alt} />,
     pre: (props) => <CodeRenderer {...props} />,
     code: ({ children }) => (
@@ -41,11 +39,12 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
       </code>
     ),
     blockquote: ({ children }) => (
-      <blockquote className="my-6 flex items-stretch overflow-hidden bg-background-soft text-foreground-soft">
+      <blockquote className="flex items-stretch overflow-hidden bg-background-soft text-foreground-soft">
         <span className="w-2 bg-muted-primary" />
         <div className="px-6 py-3 leading-7 [&>p]:mb-0">{children}</div>
       </blockquote>
     ),
+    section: ({ children }) => <section className="space-y-5">{children}</section>,
     ...components,
   };
 }

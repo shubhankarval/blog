@@ -8,7 +8,7 @@ interface ImageProps {
 
 export default function Image({ src, alt, isDesc }: ImageProps) {
   return (
-    <div className="my-5">
+    <div>
       <NextImage
         src={src}
         alt={alt}

@@ -45,7 +45,7 @@ export default function Code({ tokens, code, lines }: CodeProps) {
         </button>
       )}
       <CodeBlock tokens={tokens} lines={lines}>
-        <CodeBlock.Code className="my-7 rounded-lg bg-code-block py-5 font-code text-sm shadow-lg">
+        <CodeBlock.Code className="rounded-lg bg-code-block py-5 font-code text-sm shadow-lg">
           {({ isLineHighlighted }) => (
             <div
               className={cn('table-row', lines && (isLineHighlighted ? 'bg-code' : 'opacity-70'))}
