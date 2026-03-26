@@ -22,8 +22,16 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
       </a>
     ),
     strong: ({ children }) => <strong className="font-semibold">{children}</strong>,
-    ol: ({ children }) => <ol className="mb-2 ml-4 list-decimal">{children}</ol>,
-    ul: ({ children }) => <ul className="mb-2 ml-3 list-disc">{children}</ul>,
+    ol: ({ children }) => (
+      <ol className="my-5 ml-5 list-decimal space-y-1 leading-7 [&_ol]:my-0 [&_ol]:ml-7 [&_ul]:my-0 [&_ul]:ml-7">
+        {children}
+      </ol>
+    ),
+    ul: ({ children }) => (
+      <ul className="my-5 ml-5 list-disc space-y-1 leading-7 [&_ol]:my-0 [&_ol]:ml-7 [&_ul]:my-0 [&_ul]:ml-7 [&_ul]:list-[circle] [&_ul_ul]:list-disc">
+        {children}
+      </ul>
+    ),
     hr: () => <hr className="mt-5 mb-7 text-[#2e2e32]" />,
     pre: (props) => <CodeRenderer {...props} />,
     code: ({ children }) => (
