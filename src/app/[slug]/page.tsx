@@ -1,15 +1,28 @@
+import { getAllPosts, getPostBySlug } from '@lib/posts';
+import Meta from '@components/mdx/Meta';
+
 export const dynamicParams = false;
 
 export function generateStaticParams() {
-  return [{ slug: 'example' }];
+  const posts = getAllPosts();
+
+  return posts.map((post) => ({
+    slug: post.slug,
+  }));
 }
 
 export default async function Page({ params }: { params: Promise<{ slug: string }> }) {
   const slug = (await params).slug;
   const { default: Blog } = await import(`@/blogs/${slug}.mdx`);
 
+  const frontmatter = getPostBySlug(slug);
+  if (!frontmatter) {
+    throw new Error(`Post not found: ${slug}`);
+  }
+
   return (
     <div className="mx-auto space-y-4.5 px-6 py-10 md:max-w-xl lg:max-w-3xl">
+      <Meta title={frontmatter.title} time={frontmatter.readingTime} date={frontmatter.updatedAt} />
       <Blog />
     </div>
   );
