@@ -1,6 +1,7 @@
 import type { MDXComponents } from 'mdx/types';
 import Heading from '@components/mdx/Heading';
 import CodeRenderer from '@components/mdx/CodeRenderer';
+import Image from '@components/mdx/Image';
 
 export function useMDXComponents(components: MDXComponents): MDXComponents {
   return {
@@ -32,6 +33,7 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
       </ul>
     ),
     hr: () => <hr className="mt-5 mb-7 text-[#2e2e32]" />,
+    img: ({ src, alt }) => <Image src={src} alt={alt} />,
     pre: (props) => <CodeRenderer {...props} />,
     code: ({ children }) => (
       <code className="rounded-sm bg-code px-1.5 py-0.5 font-code text-sm text-primary">

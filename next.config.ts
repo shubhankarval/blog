@@ -4,12 +4,22 @@ import createMDX from '@next/mdx';
 const nextConfig: NextConfig = {
   /* config options here */
   pageExtensions: ['js', 'jsx', 'md', 'mdx', 'ts', 'tsx'],
+  images: {
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'images.unsplash.com',
+        port: '',
+        pathname: '/**', // You can specify a more restrictive pathname if needed
+      },
+    ],
+  },
 };
 
 const withMDX = createMDX({
   options: {
     remarkPlugins: ['remark-gfm'],
-    rehypePlugins: ['rehype-mdx-code-props'],
+    rehypePlugins: ['rehype-mdx-code-props', 'rehype-unwrap-images'],
   },
 });
 
