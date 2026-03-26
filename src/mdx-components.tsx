@@ -5,7 +5,6 @@ import Image from '@components/mdx/Image';
 
 export function useMDXComponents(components: MDXComponents): MDXComponents {
   return {
-    h1: ({ children }) => <h1 className="text-3xl font-semibold sm:text-4xl">{children}</h1>,
     h2: ({ children }) => <Heading level={2}>{children}</Heading>,
     h3: ({ children }) => <Heading level={3}>{children}</Heading>,
     h4: ({ children }) => <Heading level={4}>{children}</Heading>,
