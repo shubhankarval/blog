@@ -7,10 +7,17 @@
   --primary: hsl(187.4deg 46.5% 69.22%);
   --muted: hsl(240deg 33.33% 94.12% / 60%);
   --muted-primary: hsl(197, 35%, 57%);
+
   --bg-soft: hsl(231, 10%, 14%);
   --fg-soft: hsl(60deg 100% 96% / 85%);
+
   --code: hsla(210, 14%, 46%, 0.16);
   --code-block: hsl(0, 0%, 7%);
+
+  --accent-1: hsl(188, 55%, 65%);
+  --accent-2: hsl(155, 45%, 55%);
+  --accent-3: hsl(42, 65%, 62%);
+  --accent-4: hsl(0, 55%, 60%);
 }
 
 ::selection {
@@ -27,6 +34,10 @@
   --color-fg-soft: var(--fg-soft);
   --color-code: var(--code);
   --color-code-block: var(--code-block);
+  --color-accent-1: var(--accent-1);
+  --color-accent-2: var(--accent-2);
+  --color-accent-3: var(--accent-3);
+  --color-accent-4: var(--accent-4);
 
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);

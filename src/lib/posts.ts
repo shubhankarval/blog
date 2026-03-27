@@ -12,17 +12,22 @@ export type PostMeta = {
   updatedAt: string;
   readingTime: number;
   description: string;
+  tags: string[];
 };
 
 // In-memory cache (persists during build)
 let cachedPosts: PostMeta[] | null = null;
+let cachedTags: string[] | null = null;
 
-export function getAllPosts(): PostMeta[] {
-  if (cachedPosts) return cachedPosts;
+function buildCache() {
+  if (cachedPosts && cachedTags) return;
 
   const files = fs.readdirSync(BLOG_DIR);
 
-  cachedPosts = files.map((file) => {
+  const posts: PostMeta[] = [];
+  const tagSet = new Set<string>();
+
+  for (const file of files) {
     const slug = file.replace(/\.mdx$/, '');
     const fullPath = path.join(BLOG_DIR, file);
 
@@ -30,21 +35,34 @@ export function getAllPosts(): PostMeta[] {
     const { data, content } = matter(raw);
 
     const stats = readingTime(content);
+    data.tags.forEach((tag: string) => tagSet.add(tag));
 
-    return {
+    posts.push({
       slug,
       title: data.title,
       createdAt: data.createdAt,
       updatedAt: data.updatedAt,
       readingTime: Math.round(stats.minutes),
       description: data.description,
-    };
-  });
+      tags: data.tags,
+    });
+  }
 
-  return cachedPosts;
+  cachedPosts = posts;
+  cachedTags = Array.from(tagSet);
+}
+
+export function getAllPosts(): PostMeta[] {
+  buildCache();
+  return cachedPosts!;
 }
 
 export function getPostBySlug(slug: string): PostMeta | undefined {
-  const posts = getAllPosts(); // uses cached data
-  return posts.find((p) => p.slug === slug);
+  buildCache();
+  return cachedPosts!.find((p) => p.slug === slug);
+}
+
+export function getAllTags(): string[] {
+  buildCache();
+  return cachedTags!;
 }

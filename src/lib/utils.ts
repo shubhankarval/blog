@@ -5,7 +5,7 @@ export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
 }
 
-export function formatDate(input: string, isUpper?: boolean): string {
+export function formatDate(input: string): string {
   const [monthStr, dayStr, yearStr] = input.split('/');
   const month = parseInt(monthStr, 10);
   const day = parseInt(dayStr, 10);
@@ -26,25 +26,6 @@ export function formatDate(input: string, isUpper?: boolean): string {
     'Dec',
   ];
 
-  function getDaySuffix(day: number): string {
-    if (day >= 11 && day <= 13) return 'th';
-    switch (day % 10) {
-      case 1:
-        return 'st';
-      case 2:
-        return 'nd';
-      case 3:
-        return 'rd';
-      default:
-        return 'th';
-    }
-  }
-
   const monthName = months[month - 1];
-  if (isUpper) {
-    return `${monthName} ${day}, ${year}`.toUpperCase();
-  }
-
-  const suffix = getDaySuffix(day);
-  return `${monthName} ${day}${suffix} ${year}`;
+  return `${monthName} ${day}, ${year}`;
 }

@@ -22,7 +22,12 @@ export default async function Page({ params }: { params: Promise<{ slug: string 
 
   return (
     <div className="space-y-4.5">
-      <Meta title={frontmatter.title} time={frontmatter.readingTime} date={frontmatter.updatedAt} />
+      <Meta
+        title={frontmatter.title}
+        time={frontmatter.readingTime}
+        date={frontmatter.updatedAt}
+        tags={frontmatter.tags}
+      />
       <Blog />
     </div>
   );

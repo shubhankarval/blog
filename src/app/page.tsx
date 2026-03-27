@@ -16,6 +16,7 @@ export default function Home() {
             date={post.updatedAt}
             time={post.readingTime}
             desc={post.description}
+            tags={post.tags}
           />
         ))}
       </div>
