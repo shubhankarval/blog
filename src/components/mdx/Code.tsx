@@ -32,7 +32,7 @@ export default function Code({ tokens, code, lines }: CodeProps) {
         <button
           title="Copy Code"
           onClick={handleCopy}
-          className="absolute top-2 right-2 cursor-pointer rounded bg-background-soft opacity-70 transition-opacity hover:opacity-90"
+          className="absolute top-2 right-2 cursor-pointer rounded bg-bg-soft opacity-70 transition-opacity hover:opacity-90"
         >
           {isCopied ? (
             <div className="flex items-center">
@@ -45,7 +45,7 @@ export default function Code({ tokens, code, lines }: CodeProps) {
         </button>
       )}
       <CodeBlock tokens={tokens} lines={lines}>
-        <CodeBlock.Code className="rounded-lg bg-code-block py-5 font-code text-sm shadow-lg">
+        <CodeBlock.Code className="scrollbar-thin overflow-x-auto rounded-lg bg-code-block py-5 font-code text-sm shadow-lg scrollbar-thumb-bg-soft scrollbar-track-transparent">
           {({ isLineHighlighted }) => (
             <div
               className={cn('table-row', lines && (isLineHighlighted ? 'bg-code' : 'opacity-70'))}

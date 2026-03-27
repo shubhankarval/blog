@@ -1,4 +1,5 @@
 @import 'tailwindcss';
+@plugin 'tailwind-scrollbar';
 
 :root {
   --background: hsl(240deg 6.9% 11.37%);
@@ -6,8 +7,8 @@
   --primary: hsl(187.4deg 46.5% 69.22%);
   --muted: hsl(240deg 33.33% 94.12% / 60%);
   --muted-primary: hsl(197, 35%, 57%);
-  --background-soft: hsl(231, 10%, 14%);
-  --foreground-soft: hsl(60deg 100% 96% / 85%);
+  --bg-soft: hsl(231, 10%, 14%);
+  --fg-soft: hsl(60deg 100% 96% / 85%);
   --code: hsla(210, 14%, 46%, 0.16);
   --code-block: hsl(0, 0%, 7%);
 }
@@ -22,8 +23,8 @@
   --color-primary: var(--primary);
   --color-muted: var(--muted);
   --color-muted-primary: var(--muted-primary);
-  --color-background-soft: var(--background-soft);
-  --color-foreground-soft: var(--foreground-soft);
+  --color-bg-soft: var(--bg-soft);
+  --color-fg-soft: var(--fg-soft);
   --color-code: var(--code);
   --color-code-block: var(--code-block);
 
