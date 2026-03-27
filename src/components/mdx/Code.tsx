@@ -2,7 +2,7 @@
 import { useState } from 'react';
 import { type TokensResult } from 'shiki';
 import { CodeBlock } from 'react-code-block/shiki';
-import { Clipboard, ClipboardCheck } from 'lucide-react';
+import { Copy, Check } from 'lucide-react';
 
 import { cn } from '@lib/utils';
 
@@ -32,16 +32,9 @@ export default function Code({ tokens, code, lines }: CodeProps) {
         <button
           title="Copy Code"
           onClick={handleCopy}
-          className="absolute top-2 right-2 cursor-pointer rounded bg-bg-soft opacity-70 transition-opacity hover:opacity-90"
+          className="absolute top-2 right-2 cursor-pointer rounded-lg text-muted hover:bg-code"
         >
-          {isCopied ? (
-            <div className="flex items-center">
-              <span className="border-r border-muted p-1 text-xs">Copied</span>
-              <ClipboardCheck size={16} className="m-1" />
-            </div>
-          ) : (
-            <Clipboard size={16} className="m-1" />
-          )}
+          {isCopied ? <Check size={16} className="m-1.5" /> : <Copy size={16} className="m-1.5" />}
         </button>
       )}
       <CodeBlock tokens={tokens} lines={lines}>
