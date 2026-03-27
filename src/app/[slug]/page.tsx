@@ -21,7 +21,7 @@ export default async function Page({ params }: { params: Promise<{ slug: string 
   }
 
   return (
-    <div className="mx-auto space-y-4.5 px-6 py-10 md:max-w-xl lg:max-w-3xl">
+    <div className="space-y-4.5">
       <Meta title={frontmatter.title} time={frontmatter.readingTime} date={frontmatter.updatedAt} />
       <Blog />
     </div>

@@ -11,8 +11,7 @@ export type PostMeta = {
   createdAt: string;
   updatedAt: string;
   readingTime: number;
-  imgSrc: string;
-  imgAlt: string;
+  description: string;
 };
 
 // In-memory cache (persists during build)
@@ -38,8 +37,7 @@ export function getAllPosts(): PostMeta[] {
       createdAt: data.createdAt,
       updatedAt: data.updatedAt,
       readingTime: Math.round(stats.minutes),
-      imgSrc: data.imgSrc,
-      imgAlt: data.imgAlt,
+      description: data.description,
     };
   });
 
