@@ -1,5 +1,3 @@
-import NextImage from 'next/image';
-
 import { formatDate } from '@lib/utils';
 
 interface PostProps {
@@ -13,11 +11,13 @@ interface PostProps {
 export default function Post({ title, link, date, time, desc }: PostProps) {
   return (
     <a className="flex flex-col gap-2" href={link}>
-      <h2 className="text-xl leading-tight font-semibold sm:text-2xl">{title}</h2>
-      <span className="text-xs text-muted sm:text-sm">
-        {time} min read • {formatDate(date)}
-      </span>
-      <p className="text-sm sm:text-base">{desc}</p>
+      <h2 className="text-xl leading-tight font-semibold md:text-2xl">{title}</h2>
+      <div className="flex items-center gap-1.5 text-xs text-muted">
+        <div>{time} min read</div>
+        <div> • </div>
+        <div className="font-upper">{formatDate(date, true)}</div>
+      </div>
+      <p className="text-sm md:text-base">{desc}</p>
     </a>
   );
 }

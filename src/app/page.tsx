@@ -6,8 +6,8 @@ export default function Home() {
 
   return (
     <div className="px-6 py-8 sm:px-10">
-      <h1 className="text-5xl font-bold lg:text-6xl">blog.</h1>
-      <div className="mt-14 space-y-10">
+      <h1 className="text-5xl font-bold">blog.</h1>
+      <div className="mt-14 space-y-15">
         {posts.map((post) => (
           <Post
             key={post.slug}

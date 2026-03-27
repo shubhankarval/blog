@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import { Geist, Geist_Mono } from 'next/font/google';
+import { Geist, Geist_Mono, Outfit } from 'next/font/google';
 import localFont from 'next/font/local';
 import './globals.css';
 
@@ -40,6 +40,11 @@ const consolas = localFont({
   ],
 });
 
+const outfit = Outfit({
+  variable: '--font-outfit',
+  subsets: ['latin'],
+});
+
 export const metadata: Metadata = {
   title: "Shubhankar's Blog",
   description: 'A blog about web development, programming, and technology.',
@@ -53,7 +58,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} ${consolas.variable} min-h-screen antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} ${consolas.variable} ${outfit.variable} min-h-screen antialiased`}
       >
         <main className="container mx-auto px-6 py-10 font-sans md:max-w-xl lg:max-w-3xl">
           {children}
