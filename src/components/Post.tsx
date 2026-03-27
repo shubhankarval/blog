@@ -14,12 +14,12 @@ const accentBg = ['bg-accent-1/10', 'bg-accent-2/10', 'bg-accent-3/10', 'bg-acce
 
 export default function Post({ title, link, date, time, desc, tags }: PostProps) {
   return (
-    <a className="flex flex-col gap-2" href={link}>
-      <h2 className="text-xl leading-tight font-semibold md:text-2xl">{title}</h2>
+    <a className="group flex flex-col gap-2" href={link}>
+      <h2 className="text-2xl leading-tight font-semibold group-hover:text-primary">{title}</h2>
       <div className="flex items-center gap-1.5 text-xs text-muted">
         <div>{time} min read</div>
         <div> • </div>
-        <div className="font-upper">{formatDate(date).toUpperCase()}</div>
+        <div>{formatDate(date)}</div>
       </div>
       <p className="text-sm md:text-base">{desc}</p>
       <div className="flex flex-wrap gap-1.5">
@@ -27,7 +27,7 @@ export default function Post({ title, link, date, time, desc, tags }: PostProps)
           <span
             key={`${tag}-${i}`}
             className={cn(
-              'rounded-md bg-code px-2 py-1 font-mono text-xs',
+              'rounded-md bg-code px-2 py-0.5 font-mono text-xs',
               accentText[i % 4],
               accentBg[i % 4]
             )}
