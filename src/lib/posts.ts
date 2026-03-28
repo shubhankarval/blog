@@ -48,6 +48,12 @@ function buildCache() {
     });
   }
 
+  // Sort by newest first
+  posts.sort((a, b) => {
+    const dateA = new Date(a.updatedAt);
+    const dateB = new Date(b.updatedAt);
+    return dateB.getTime() - dateA.getTime();
+  });
   cachedPosts = posts;
   cachedTags = Array.from(tagSet);
 }

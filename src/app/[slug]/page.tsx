@@ -1,5 +1,6 @@
 import { getAllPosts, getPostBySlug } from '@lib/posts';
 import Meta from '@components/mdx/Meta';
+import Header from '@components/Header';
 
 export const dynamicParams = false;
 
@@ -21,14 +22,17 @@ export default async function Page({ params }: { params: Promise<{ slug: string 
   }
 
   return (
-    <div className="space-y-4.5">
-      <Meta
-        title={frontmatter.title}
-        time={frontmatter.readingTime}
-        date={frontmatter.updatedAt}
-        tags={frontmatter.tags}
-      />
-      <Blog />
+    <div className="space-y-6">
+      <Header />
+      <div className="space-y-4.5">
+        <Meta
+          title={frontmatter.title}
+          time={frontmatter.readingTime}
+          date={frontmatter.updatedAt}
+          tags={frontmatter.tags}
+        />
+        <Blog />
+      </div>
     </div>
   );
 }
