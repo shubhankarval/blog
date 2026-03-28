@@ -1,3 +1,5 @@
+import Link from 'next/link';
+
 import { formatDate, cn } from '@lib/utils';
 
 interface PostProps {
@@ -14,7 +16,7 @@ const accentBg = ['bg-accent-1/10', 'bg-accent-2/10', 'bg-accent-3/10', 'bg-acce
 
 export default function Post({ title, link, date, time, desc, tags }: PostProps) {
   return (
-    <a className="group flex flex-col gap-2" href={link}>
+    <Link className="group flex flex-col gap-2" href={link}>
       <h2 className="text-2xl leading-tight font-semibold group-hover:text-primary">{title}</h2>
       <div className="flex items-center gap-1.5 text-xs text-muted">
         <div>{time} min read</div>
@@ -36,6 +38,6 @@ export default function Post({ title, link, date, time, desc, tags }: PostProps)
           </span>
         ))}
       </div>
-    </a>
+    </Link>
   );
 }

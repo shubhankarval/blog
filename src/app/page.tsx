@@ -1,3 +1,5 @@
+import Link from 'next/link';
+
 import { getAllPosts } from '@lib/posts';
 import Post from '@components/Post';
 
@@ -6,7 +8,11 @@ export default function Home() {
 
   return (
     <div className="px-4 py-8 sm:px-6 lg:px-10">
-      <h1 className="text-5xl font-bold">blog.</h1>
+      <header>
+        <Link href="/">
+          <h1 className="text-5xl font-bold">blog.</h1>
+        </Link>
+      </header>
       <div className="mt-14 space-y-10 md:space-y-15">
         {posts.map((post) => (
           <Post
