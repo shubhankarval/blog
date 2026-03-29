@@ -4,9 +4,11 @@ create or replace function increment_blog_views(
 )
 returns void
 language plpgsql
+security definer                    
+set search_path = ''               
 as $$
 begin
-  insert into blog_views (slug, views, unique_views)
+  insert into public.blog_views (slug, views, unique_views)  -- fully qualified
   values (
     post_slug,
     1,
@@ -14,8 +16,8 @@ begin
   )
   on conflict (slug)
   do update set
-    views = blog_views.views + 1,
-    unique_views = blog_views.unique_views + (case when is_unique then 1 else 0 end),
+    views = public.blog_views.views + 1,
+    unique_views = public.blog_views.unique_views + (case when is_unique then 1 else 0 end),
     updated_at = now();
 end;
 $$;
