@@ -1,3 +1,5 @@
+import { notFound } from 'next/navigation';
+
 import { getAllPosts, getPostBySlug } from '@lib/posts';
 import Meta from '@components/mdx/Meta';
 import Header from '@components/Header';
@@ -14,11 +16,17 @@ export function generateStaticParams() {
 
 export default async function Page({ params }: { params: Promise<{ slug: string }> }) {
   const slug = (await params).slug;
-  const { default: Blog } = await import(`@/blogs/${slug}.mdx`);
 
   const frontmatter = getPostBySlug(slug);
   if (!frontmatter) {
-    throw new Error(`Post not found: ${slug}`);
+    notFound();
+  }
+
+  let Blog;
+  try {
+    Blog = (await import(`@/blogs/${slug}.mdx`)).default;
+  } catch {
+    notFound();
   }
 
   return (
