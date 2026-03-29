@@ -3,6 +3,7 @@ import { notFound } from 'next/navigation';
 import { getAllPosts, getPostBySlug } from '@lib/posts';
 import Meta from '@components/mdx/Meta';
 import Header from '@components/Header';
+import TrackView from '@components/TrackView';
 
 export const dynamicParams = false;
 
@@ -41,6 +42,7 @@ export default async function Page({ params }: { params: Promise<{ slug: string 
         />
         <Blog />
       </div>
+      <TrackView slug={slug} />
     </div>
   );
 }
