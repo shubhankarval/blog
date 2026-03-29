@@ -29,7 +29,7 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
         {children}
       </ul>
     ),
-    hr: () => <hr className="text-[#2e2e32]" />,
+    hr: () => <hr className="text-bg-elevated" />,
     img: ({ src, alt }) => <Image src={src} alt={alt} />,
     pre: (props) => <CodeRenderer {...props} />,
     code: ({ children }) => (

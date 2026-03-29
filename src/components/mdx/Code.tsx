@@ -2,7 +2,7 @@
 import { useState } from 'react';
 import { type TokensResult } from 'shiki';
 import { CodeBlock } from 'react-code-block/shiki';
-import { Copy, Check } from 'lucide-react';
+import { LuCopy, LuCheck } from 'react-icons/lu';
 
 import { cn } from '@lib/utils';
 
@@ -34,7 +34,11 @@ export default function Code({ tokens, code, lines }: CodeProps) {
           onClick={handleCopy}
           className="absolute top-2 right-2 cursor-pointer rounded-lg text-muted hover:bg-code"
         >
-          {isCopied ? <Check size={16} className="m-1.5" /> : <Copy size={16} className="m-1.5" />}
+          {isCopied ? (
+            <LuCheck size={16} className="m-1.5" />
+          ) : (
+            <LuCopy size={16} className="m-1.5" />
+          )}
         </button>
       )}
       <CodeBlock tokens={tokens} lines={lines}>

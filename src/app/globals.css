@@ -10,6 +10,7 @@
 
   --bg-soft: hsl(231, 10%, 14%);
   --fg-soft: hsl(60deg 100% 96% / 85%);
+  --bg-elevated: hsl(240, 4%, 19%);
 
   --code: hsla(210, 14%, 46%, 0.16);
   --code-block: hsl(0, 0%, 7%);
@@ -32,6 +33,7 @@
   --color-muted-primary: var(--muted-primary);
   --color-bg-soft: var(--bg-soft);
   --color-fg-soft: var(--fg-soft);
+  --color-bg-elevated: var(--bg-elevated);
   --color-code: var(--code);
   --color-code-block: var(--code-block);
   --color-accent-1: var(--accent-1);

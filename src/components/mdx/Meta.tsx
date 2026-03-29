@@ -1,4 +1,4 @@
-import { Clock } from 'lucide-react';
+import { LuClock } from 'react-icons/lu';
 
 import { formatDate } from '@lib/utils';
 
@@ -15,7 +15,7 @@ export default function Meta({ title, time, date, tags }: MetaProps) {
       <h1 className="text-3xl font-semibold sm:text-4xl">{title}</h1>
       <div className="flex items-center gap-2 text-sm text-muted">
         <div className="flex items-center gap-1">
-          <Clock className="size-4" />
+          <LuClock className="size-4" />
           <div>{time} min read</div>
         </div>
         <div> • </div>
