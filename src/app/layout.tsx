@@ -19,22 +19,22 @@ const consolas = localFont({
   display: 'swap',
   src: [
     {
-      path: '../../public/fonts/CONSOLA.ttf',
+      path: '../../public/fonts/consola.ttf',
       weight: '400',
       style: 'normal',
     },
     {
-      path: '../../public/fonts/CONSOLAB.ttf',
+      path: '../../public/fonts/consolab.ttf',
       weight: '700',
       style: 'normal',
     },
     {
-      path: '../../public/fonts/CONSOLAI.ttf',
+      path: '../../public/fonts/consolai.ttf',
       weight: '400',
       style: 'italic',
     },
     {
-      path: '../../public/fonts/CONSOLAZ.ttf',
+      path: '../../public/fonts/consolaz.ttf',
       weight: '700',
       style: 'italic',
     },
