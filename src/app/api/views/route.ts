@@ -8,7 +8,7 @@ const supabase = createClient<Database>(
 
 export async function POST(req: Request) {
   try {
-    const { slug, isUnique } = await req.json();
+    const { slug, isUnique, source } = await req.json();
 
     if (!slug) {
       return new Response('Missing slug', { status: 400 });
@@ -16,7 +16,8 @@ export async function POST(req: Request) {
 
     const { error } = await supabase.rpc('increment_blog_views', {
       post_slug: slug,
-      is_unique: isUnique ?? false,
+      is_unique: isUnique,
+      view_source: source,
     });
 
     if (error) {

@@ -28,6 +28,27 @@ export type Database = {
   };
   public: {
     Tables: {
+      blog_sources: {
+        Row: {
+          slug: string;
+          source: string;
+          updated_at: string | null;
+          views: number | null;
+        };
+        Insert: {
+          slug: string;
+          source: string;
+          updated_at?: string | null;
+          views?: number | null;
+        };
+        Update: {
+          slug?: string;
+          source?: string;
+          updated_at?: string | null;
+          views?: number | null;
+        };
+        Relationships: [];
+      };
       blog_views: {
         Row: {
           slug: string;
@@ -55,7 +76,7 @@ export type Database = {
     };
     Functions: {
       increment_blog_views: {
-        Args: { is_unique: boolean; post_slug: string };
+        Args: { is_unique: boolean; post_slug: string; view_source: string };
         Returns: undefined;
       };
     };
