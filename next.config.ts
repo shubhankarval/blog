@@ -14,6 +14,18 @@ const nextConfig: NextConfig = {
       },
     ],
   },
+  async rewrites() {
+    return [
+      {
+        source: '/umami.js',
+        destination: 'https://umami.shubhankarval.dev/umami.js',
+      },
+      {
+        source: '/api/send',
+        destination: 'https://umami.shubhankarval.dev/api/send',
+      },
+    ];
+  },
 };
 
 const withMDX = createMDX({
