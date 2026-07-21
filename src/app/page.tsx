@@ -2,7 +2,6 @@ import Link from 'next/link';
 
 import { getAllPosts } from '@lib/posts';
 import Post from '@components/Post';
-import TrackView from '@components/TrackView';
 
 export default function Home() {
   // const posts = getAllPosts();
@@ -27,7 +26,6 @@ export default function Home() {
           />
         ))}
       </div> */}
-      <TrackView slug="index" />
     </div>
   );
 }

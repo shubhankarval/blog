@@ -3,7 +3,6 @@ import { notFound } from 'next/navigation';
 import { getAllPosts, getPostBySlug } from '@lib/posts';
 import Meta from '@components/mdx/Meta';
 import Header from '@components/Header';
-import TrackView from '@components/TrackView';
 
 export const dynamicParams = false;
 
@@ -19,16 +18,14 @@ export function generateStaticParams() {
 export default async function Page({ params }: { params: Promise<{ slug: string }> }) {
   notFound();
   // const slug = (await params).slug;
+
   // const frontmatter = getPostBySlug(slug);
   // if (!frontmatter) {
   //   notFound();
   // }
-  // let Blog;
-  // try {
-  //   Blog = (await import(`@/blogs/${slug}.mdx`)).default;
-  // } catch {
-  //   notFound();
-  // }
+
+  // const { default: Blog } = await import(`@/blogs/${slug}.mdx`);
+
   // return (
   //   <div className="space-y-6">
   //     <Header />
@@ -41,7 +38,6 @@ export default async function Page({ params }: { params: Promise<{ slug: string 
   //       />
   //       <Blog />
   //     </div>
-  //     <TrackView slug={slug} />
   //   </div>
   // );
 }
