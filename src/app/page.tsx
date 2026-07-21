@@ -4,7 +4,7 @@ import { getAllPosts } from '@lib/posts';
 import Post from '@components/Post';
 
 export default function Home() {
-  const posts = getAllPosts();
+  // const posts = getAllPosts();
 
   return (
     <div className="px-4 py-8 sm:px-6 lg:px-10">
@@ -13,7 +13,7 @@ export default function Home() {
           <h1 className="text-5xl font-bold">blog.</h1>
         </Link>
       </header>
-      <div className="mt-14 space-y-10 md:space-y-15">
+      {/* <div className="mt-14 space-y-10 md:space-y-15">
         {posts.map((post) => (
           <Post
             key={post.slug}
@@ -25,7 +25,7 @@ export default function Home() {
             tags={post.tags}
           />
         ))}
-      </div>
+      </div> */}
     </div>
   );
 }
