@@ -63,7 +63,7 @@ export default function RootLayout({
         </main>
         {process.env.NODE_ENV === 'production' && (
           <Script
-            src="/umami.js"
+            src="/analytics.js"
             data-website-id="02660cb9-c256-44d6-8ab6-3fa6e5f33c8a"
             data-domains="blog.shubhankarval.dev,www.blog.shubhankarval.dev"
             strategy="afterInteractive"

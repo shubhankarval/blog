@@ -17,8 +17,8 @@ const nextConfig: NextConfig = {
   async rewrites() {
     return [
       {
-        source: '/umami.js',
-        destination: 'https://umami.shubhankarval.dev/umami.js',
+        source: '/analytics.js',
+        destination: 'https://umami.shubhankarval.dev/script.js',
       },
       {
         source: '/api/send',
