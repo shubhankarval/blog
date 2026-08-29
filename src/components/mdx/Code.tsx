@@ -30,6 +30,7 @@ export default function Code({ tokens, code, lines }: CodeProps) {
     >
       {(isHovered || isCopied) && (
         <button
+          type="button"
           title="Copy Code"
           onClick={handleCopy}
           className="absolute top-2 right-2 cursor-pointer rounded-lg text-muted hover:bg-code"
