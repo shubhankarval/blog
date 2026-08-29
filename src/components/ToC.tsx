@@ -133,7 +133,7 @@ export default function Toc({ items }: TocProps) {
     // Spans the full gutter beside the prose so the rail can sit centred within it
     <nav
       aria-label="Table of contents"
-      className="absolute inset-y-0 left-full hidden w-[calc((100vw-100%)/2)] xl:block"
+      className="absolute inset-y-0 left-full hidden w-[calc((100cqw-100%)/2)] xl:block"
     >
       <div className="sticky top-10 mx-auto max-h-[calc(100vh-5rem)] w-52 overflow-y-auto">
         <ul className="relative" ref={listRef}>
