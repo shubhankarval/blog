@@ -1,18 +1,18 @@
 import React from 'react';
-import { cn } from '@lib/utils';
+import { cn, slugify } from '@lib/utils';
 
 interface HeadingProps {
   level: number;
-  children: string;
+  children: React.ReactNode;
 }
 
 export default function Code({ level, children }: HeadingProps) {
   const HeadingTag = `h${level}` as keyof React.JSX.IntrinsicElements; // Dynamically select the heading tag
-  const id = sanitizeId(children); // Generate an ID based on the text content
+  const id = slugify(toText(children)); // Generate an ID based on the text content
 
   return (
     <HeadingTag
-      className={cn('group relative font-semibold', {
+      className={cn('group relative scroll-mt-24 font-semibold', {
         'mt-10 text-2xl sm:text-3xl': level === 2,
         'mt-8 text-xl sm:text-2xl': level === 3,
         'mt-7 text-lg sm:text-xl': level === 4,
@@ -40,9 +40,13 @@ export default function Code({ level, children }: HeadingProps) {
   );
 }
 
-const sanitizeId = (text: string) =>
-  text
-    .toLowerCase()
-    .replace(/[^a-z0-9 ]+/g, '') // Remove all non-alphanumeric except spaces
-    .trim()
-    .replace(/\s+/g, '-'); // Replace spaces (and runs of spaces) with dashes
+// MDX passes an array of nodes whenever a heading contains formatting, so flatten to plain text
+function toText(node: React.ReactNode): string {
+  if (node == null || typeof node === 'boolean') return '';
+  if (typeof node === 'string' || typeof node === 'number') return String(node);
+  if (Array.isArray(node)) return node.map(toText).join('');
+  if (React.isValidElement<{ children?: React.ReactNode }>(node)) {
+    return toText(node.props.children);
+  }
+  return '';
+}
