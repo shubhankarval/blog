@@ -15,6 +15,8 @@ import { cn } from '@lib/utils';
 // at which a heading counts as active.
 const ACTIVATION_LINE = 96;
 const REDUCED_MOTION = '(prefers-reduced-motion: reduce)';
+// Fraction of the item's height the indicator spans, centred on the label.
+const INDICATOR_SCALE = 0.8;
 
 function subscribeReducedMotion(onChange: () => void) {
   const query = window.matchMedia(REDUCED_MOTION);
@@ -65,9 +67,9 @@ export default function Toc({ items }: TocProps) {
         return;
       }
 
-      // Nothing is intersecting - happens between widely spaced headings. Fall back to the
-      // last heading above the activation line.
-      let fallback = 0;
+      // Nothing is intersecting - happens above the first heading and between widely spaced
+      // ones. Fall back to the last heading above the activation line, or nothing at all.
+      let fallback: number | null = null;
       for (const { index, el } of headings) {
         if (el.getBoundingClientRect().top < ACTIVATION_LINE) {
           fallback = index;
@@ -109,10 +111,16 @@ export default function Toc({ items }: TocProps) {
   }, [items]);
 
   const measure = useCallback(() => {
-    if (activeIndex === null) return;
-    const element = itemRefs.current.get(activeIndex);
-    if (!element) return;
-    setIndicator({ top: element.offsetTop, height: element.offsetHeight });
+    const element = activeIndex === null ? null : itemRefs.current.get(activeIndex);
+    if (!element) {
+      setIndicator((prev) => (prev.height === 0 ? prev : { top: 0, height: 0 }));
+      return;
+    }
+    const height = element.offsetHeight * INDICATOR_SCALE;
+    setIndicator({
+      top: element.offsetTop + (element.offsetHeight - height) / 2,
+      height,
+    });
   }, [activeIndex]);
 
   useLayoutEffect(measure, [measure]);
@@ -132,49 +140,55 @@ export default function Toc({ items }: TocProps) {
   return (
     // Spans the full gutter beside the prose so the rail can sit centred within it
     <nav
-      aria-label="Table of contents"
+      aria-labelledby="toc-heading"
       className="absolute inset-y-0 left-full hidden w-[calc((100cqw-100%)/2)] xl:block"
     >
-      <div className="sticky top-10 mx-auto max-h-[calc(100vh-5rem)] w-52 overflow-y-auto">
-        <ul className="relative" ref={listRef}>
-          <span className="absolute top-0 bottom-0 left-0 w-px bg-bg-elevated" aria-hidden />
-          {indicator.height > 0 && (
-            <span
-              className={cn(
-                'absolute left-0 w-px bg-primary',
-                !reducedMotion && 'transition-all duration-200 ease-out'
-              )}
-              style={{ top: indicator.top, height: indicator.height }}
-              aria-hidden
-            />
-          )}
+      <div className="sticky top-10 mx-auto flex max-h-[calc(100vh-5rem)] w-52 flex-col">
+        <p id="toc-heading" className="mb-3 text-sm font-semibold text-fg-soft">
+          On this page
+        </p>
+        {/* Only the list scrolls, so the label stays put on posts with many headings */}
+        <div className="min-h-0 overflow-y-auto">
+          <ul className="relative" ref={listRef}>
+            <span className="absolute top-0 bottom-0 left-0 w-px bg-bg-elevated" aria-hidden />
+            {indicator.height > 0 && (
+              <span
+                className={cn(
+                  'absolute left-0 w-px bg-primary',
+                  !reducedMotion && 'transition-all duration-200 ease-out'
+                )}
+                style={{ top: indicator.top, height: indicator.height }}
+                aria-hidden
+              />
+            )}
 
-          {items.map((item, index) => {
-            const isActive = index === activeIndex;
-            return (
-              <li
-                key={`${item.id}-${index}`}
-                ref={(node) => {
-                  if (node) itemRefs.current.set(index, node);
-                  else itemRefs.current.delete(index);
-                }}
-              >
-                <a
-                  href={`#${item.id}`}
-                  title={item.text}
-                  aria-current={isActive ? 'true' : undefined}
-                  className={cn(
-                    'block truncate py-1.5 text-sm transition-colors hover:text-fg-soft',
-                    item.level === 2 ? 'pl-4' : 'pl-8 text-xs',
-                    isActive ? 'font-medium text-foreground' : 'text-muted'
-                  )}
+            {items.map((item, index) => {
+              const isActive = index === activeIndex;
+              return (
+                <li
+                  key={`${item.id}-${index}`}
+                  ref={(node) => {
+                    if (node) itemRefs.current.set(index, node);
+                    else itemRefs.current.delete(index);
+                  }}
                 >
-                  {item.text}
-                </a>
-              </li>
-            );
-          })}
-        </ul>
+                  <a
+                    href={`#${item.id}`}
+                    title={item.text}
+                    aria-current={isActive ? 'true' : undefined}
+                    className={cn(
+                      'block truncate py-1.5 text-sm transition-colors hover:text-fg-soft',
+                      item.level === 2 ? 'pl-5' : 'pl-10 text-xs',
+                      isActive ? 'font-medium text-foreground' : 'text-muted'
+                    )}
+                  >
+                    {item.text}
+                  </a>
+                </li>
+              );
+            })}
+          </ul>
+        </div>
       </div>
     </nav>
   );
