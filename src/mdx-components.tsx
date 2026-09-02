@@ -10,7 +10,7 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
     h4: ({ children }) => <Heading level={4}>{children}</Heading>,
     h5: ({ children }) => <Heading level={5}>{children}</Heading>,
     h6: ({ children }) => <Heading level={6}>{children}</Heading>,
-    p: ({ children }) => <p className="">{children}</p>,
+    p: ({ children }) => <p>{children}</p>,
     a: ({ children, href, id }) => (
       <a
         id={id}
@@ -31,6 +31,7 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
     ),
     hr: () => <hr className="text-bg-elevated" />,
     img: ({ src, alt }) => <Image src={src} alt={alt} />,
+    Image,
     pre: (props) => <CodeRenderer {...props} />,
     code: ({ children }) => (
       <code className="rounded-sm bg-code px-1.5 py-0.5 font-code text-sm text-primary">
