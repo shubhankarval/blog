@@ -1,0 +1,90 @@
+---
+title: Blog Components Test
+createdAt: 10/1/2026
+updatedAt: 10/1/2026
+description: A sample post exercising the blog's MDX components and common Markdown elements.
+tags: [testing, mdx, components]
+---
+
+This post is a rendering check for **bold text**, _italic text_, ~~strikethrough~~, and inline `code`. It also checks a [regular link](https://example.com) and automatic link detection at https://mdxjs.com/.
+
+Superscript: E = mc<sup>2</sup>. Subscript: H<sub>2</sub>O.
+
+## Headings and anchors
+
+Each heading level below should render with a linkable anchor.
+
+### Third-level heading
+
+#### Fourth-level heading
+
+##### Fifth-level heading
+
+###### Sixth-level heading
+
+## Lists
+
+- Unordered item one
+- Unordered item two
+  - Nested unordered item
+  - Another nested item
+
+1. Ordered item one
+2. Ordered item two
+   1. Nested ordered item
+
+## Blockquote and divider
+
+> A blockquote with **formatted text** and a [link](https://example.com).
+>
+> A second paragraph in the same quote.
+
+---
+
+## Images
+
+The standard Markdown image should use the configured image renderer:
+
+![A night sky](https://images.unsplash.com/photo-1528818955841-a7f1425131b5?q=80&w=1200&auto=format&fit=crop)
+
+The custom `Image` component also supports a caption:
+
+<Image
+  src="https://images.unsplash.com/photo-1528818955841-a7f1425131b5?q=80&w=1200&auto=format&fit=crop"
+  alt="A starry night sky"
+  isDesc
+/>
+
+## Code blocks
+
+An unhighlighted JavaScript block:
+
+```js
+const greeting = 'Hello, MDX';
+console.log(greeting);
+```
+
+A block with selected lines highlighted:
+
+```ts lines={[2]}
+type Post = {
+  title: string;
+  tags: string[];
+};
+
+const post: Post = { title: 'Test post', tags: ['mdx'] };
+console.log(post.title);
+```
+
+## Explicit section
+
+<section>
+  <p>This paragraph is wrapped in the custom <code>section</code> renderer.</p>
+  <p>It should preserve spacing between the section's children.</p>
+</section>
+
+## Footnotes
+
+This sentence has a footnote reference.[^note]
+
+[^note]: Footnotes should render as a reference and a note at the end of the post.
