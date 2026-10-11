@@ -3,6 +3,8 @@ import { Geist, Geist_Mono } from 'next/font/google';
 import localFont from 'next/font/local';
 import Script from 'next/script';
 import './globals.css';
+
+import { SITE_NAME, SITE_DESCRIPTION, SITE_URL } from '@lib/constants';
 import Footer from '@components/Footer';
 
 const geistSans = Geist({
@@ -43,8 +45,27 @@ const consolas = localFont({
 });
 
 export const metadata: Metadata = {
-  title: "Shubhankar's Blog",
-  description: 'A blog about web development, programming, and technology.',
+  metadataBase: new URL(SITE_URL),
+  title: {
+    default: SITE_NAME,
+    template: `%s | ${SITE_NAME}`,
+  },
+  description: SITE_DESCRIPTION,
+  authors: [{ name: 'Shubhankar' }],
+  creator: 'Shubhankar',
+  openGraph: {
+    type: 'website',
+    siteName: SITE_NAME,
+    locale: 'en_US',
+    url: '/',
+    title: SITE_NAME,
+    description: SITE_DESCRIPTION,
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: SITE_NAME,
+    description: SITE_DESCRIPTION,
+  },
 };
 
 export default function RootLayout({

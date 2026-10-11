@@ -1,7 +1,12 @@
+import type { Metadata } from 'next';
 import Link from 'next/link';
 
 import { getAllPosts } from '@lib/posts';
 import Post from '@components/Post';
+
+export const metadata: Metadata = {
+  alternates: { canonical: '/' },
+};
 
 export default function Home() {
   const posts = getAllPosts();

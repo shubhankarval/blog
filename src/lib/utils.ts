@@ -37,3 +37,9 @@ export function formatDate(input: string): string {
   const monthName = months[month - 1];
   return `${monthName} ${day}, ${year}`;
 }
+
+// Frontmatter dates are MM/DD/YYYY; metadata needs ISO 8601
+export function toIsoDate(input: string): string {
+  const [month, day, year] = input.split('/');
+  return `${year}-${month.padStart(2, '0')}-${day.padStart(2, '0')}`;
+}
