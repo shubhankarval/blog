@@ -3,6 +3,7 @@ import { notFound } from 'next/navigation';
 
 import { getAllPosts, getPostBySlug } from '@lib/posts';
 import { getTocBySlug } from '@lib/toc';
+import { toIsoDate } from '@lib/utils';
 import Meta from '@components/mdx/Meta';
 import Header from '@components/Header';
 import TocProvider from '@components/toc/TocProvider';
@@ -34,6 +35,19 @@ export async function generateMetadata({
   return {
     title: post.title,
     description: post.description,
+    keywords: post.tags,
+    alternates: {
+      canonical: `/${slug}`,
+    },
+    openGraph: {
+      type: 'article',
+      title: post.title,
+      description: post.description,
+      url: `/${slug}`,
+      publishedTime: toIsoDate(post.createdAt),
+      modifiedTime: toIsoDate(post.updatedAt),
+      tags: post.tags,
+    },
     twitter: {
       card: 'summary_large_image',
       title: post.title,
