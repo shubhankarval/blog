@@ -15,8 +15,14 @@ export default function Home() {
     <div className="px-4 py-8 sm:px-6 lg:px-10">
       <header>
         <Link href="/">
-          <h1 className="text-5xl font-bold">blog.</h1>
+          <h1 className="text-5xl leading-none font-bold">
+            blog<span className="text-primary">.</span>
+          </h1>
         </Link>
+        <p className="mt-4 max-w-xl leading-relaxed text-fg-soft">
+          long reads and hot takes on engineering, design and tech. plus the things I&apos;ve built
+          along the way.
+        </p>
       </header>
       <div className="mt-14 space-y-10 md:space-y-15">
         {posts.map((post) => (
