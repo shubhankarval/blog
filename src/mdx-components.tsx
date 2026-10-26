@@ -22,10 +22,10 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
     ),
     strong: ({ children }) => <strong className="font-semibold">{children}</strong>,
     ol: ({ children }) => (
-      <ol className="ml-5 list-decimal space-y-1 leading-7 [&_ol]:ml-7 [&_ul]:ml-7">{children}</ol>
+      <ol className="ml-5 list-decimal space-y-1 [&_ol]:ml-7 [&_ul]:ml-7">{children}</ol>
     ),
     ul: ({ children }) => (
-      <ul className="ml-5 list-disc space-y-1 leading-7 [&_ol]:ml-7 [&_ul]:ml-7 [&_ul]:list-[circle] [&_ul_ul]:list-disc">
+      <ul className="ml-5 list-disc space-y-1 [&_ol]:ml-7 [&_ul]:ml-7 [&_ul]:list-[circle] [&_ul_ul]:list-disc">
         {children}
       </ul>
     ),
@@ -41,7 +41,7 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
     blockquote: ({ children }) => (
       <blockquote className="flex overflow-hidden bg-bg-soft text-fg-soft">
         <span className="w-1.25 shrink-0 bg-muted-primary" />
-        <div className="px-6 py-3 leading-7">{children}</div>
+        <div className="px-6 py-3">{children}</div>
       </blockquote>
     ),
     section: ({ children }) => <section className="space-y-5">{children}</section>,

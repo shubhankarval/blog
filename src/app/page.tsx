@@ -19,9 +19,9 @@ export default function Home() {
             blog<span className="text-primary">.</span>
           </h1>
         </Link>
-        <p className="mt-4 max-w-xl leading-relaxed text-fg-soft">
-          long reads and hot takes on engineering, design and tech. plus the things I&apos;ve built
-          along the way.
+        <p className="mt-4 max-w-xl leading-[1.8] text-fg-soft">
+          long reads and hot takes on engineering, design and tech, plus a few things I&apos;ve
+          built along the way.
         </p>
       </header>
       <div className="mt-14 space-y-10 md:space-y-15">

@@ -81,7 +81,9 @@ export default async function Page({ params }: { params: Promise<{ slug: string 
               tags={frontmatter.tags}
             />
             <TocBar variant="inline" className="hidden md:block xl:hidden" />
-            <Blog />
+            <article className="max-w-[68ch] space-y-[1.25em] text-[1.0625rem] leading-[1.8]">
+              <Blog />
+            </article>
           </div>
           <TocRail />
         </div>

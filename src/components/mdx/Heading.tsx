@@ -6,7 +6,7 @@ interface HeadingProps {
   children: React.ReactNode;
 }
 
-export default function Code({ level, children }: HeadingProps) {
+export default function Heading({ level, children }: HeadingProps) {
   const HeadingTag = `h${level}` as keyof React.JSX.IntrinsicElements; // Dynamically select the heading tag
   const id = slugify(toText(children)); // Generate an ID based on the text content
 
