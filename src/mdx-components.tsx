@@ -18,10 +18,10 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
     p: ({ children, id }) => <p id={id}>{children}</p>,
     a: ({ children, href, id, ...rest }) => (
       <a
+        {...rest}
         id={id}
         href={href}
         className="font-medium text-primary underline-offset-4 transition-opacity hover:underline hover:opacity-80"
-        {...rest}
       >
         {children}
       </a>

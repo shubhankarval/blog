@@ -70,11 +70,11 @@ sup a[data-footnote-ref] {
 }
 
 sup a[data-footnote-ref]::before {
-  content: 'I';
+  content: '[';
 }
 
 sup a[data-footnote-ref]::after {
-  content: '1';
+  content: ']';
 }
 
 section[data-footnotes] {
@@ -114,4 +114,18 @@ section[data-footnotes] li::before {
   font-size: 12px;
   font-weight: 600;
   color: var(--primary);
+}
+
+section[data-footnotes] em {
+  color: var(--fg-soft);
+  font-style: normal;
+}
+
+section[data-footnotes] strong {
+  color: var(--foreground);
+}
+
+section[data-footnotes] a[data-footnote-backref] {
+  margin-left: 0.4rem;
+  text-decoration: none;
 }
