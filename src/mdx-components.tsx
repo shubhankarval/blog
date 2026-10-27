@@ -1,5 +1,6 @@
 import type { MDXComponents } from 'mdx/types';
 import Heading from '@components/mdx/Heading';
+import Callout from '@components/mdx/Callout';
 import CodeRenderer from '@components/mdx/CodeRenderer';
 import Image from '@components/mdx/Image';
 
@@ -32,6 +33,7 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
     hr: () => <hr className="text-bg-elevated" />,
     img: ({ src, alt }) => <Image src={src} alt={alt} />,
     Image,
+    Callout,
     pre: (props) => <CodeRenderer {...props} />,
     code: ({ children }) => (
       <code className="rounded-sm bg-code px-1.5 py-0.5 font-code text-sm text-primary">
