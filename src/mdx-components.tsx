@@ -3,6 +3,7 @@ import Heading from '@components/mdx/Heading';
 import Callout from '@components/mdx/Callout';
 import CodeRenderer from '@components/mdx/CodeRenderer';
 import Image from '@components/mdx/Image';
+import Quote from '@components/mdx/Quote';
 
 export function useMDXComponents(components: MDXComponents): MDXComponents {
   return {
@@ -40,12 +41,8 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
         {children}
       </code>
     ),
-    blockquote: ({ children }) => (
-      <blockquote className="flex overflow-hidden bg-bg-soft text-fg-soft">
-        <span className="w-1.25 shrink-0 bg-muted-primary" />
-        <div className="px-6 py-3">{children}</div>
-      </blockquote>
-    ),
+    blockquote: ({ children }) => <Quote>{children}</Quote>,
+    Quote,
     section: ({ children }) => <section className="space-y-5">{children}</section>,
     ...components,
   };
