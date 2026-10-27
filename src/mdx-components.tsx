@@ -4,6 +4,7 @@ import Callout from '@components/mdx/Callout';
 import CodeRenderer from '@components/mdx/CodeRenderer';
 import Image from '@components/mdx/Image';
 import Quote from '@components/mdx/Quote';
+import Summary from '@components/mdx/Summary';
 
 export function useMDXComponents(components: MDXComponents): MDXComponents {
   return {
@@ -35,6 +36,7 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
     img: ({ src, alt }) => <Image src={src} alt={alt} />,
     Image,
     Callout,
+    Summary,
     pre: (props) => <CodeRenderer {...props} />,
     code: ({ children }) => (
       <code className="rounded-sm bg-code px-1.5 py-0.5 font-code text-sm text-primary">
