@@ -45,7 +45,7 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
       <th
         style={style}
         align={align}
-        className="bg-bg-soft px-3.5 py-2.5 font-code text-[11px] font-semibold tracking-widest text-muted uppercase [&:not([align]):not([style])]:text-left"
+        className="bg-bg-soft px-3.5 py-2.5 font-code text-xs font-semibold tracking-widest text-muted uppercase [&:not([align]):not([style])]:text-left"
       >
         {children}
       </th>
@@ -73,7 +73,14 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
     ),
     blockquote: ({ children }) => <Quote>{children}</Quote>,
     Quote,
-    section: ({ children }) => <section className="space-y-5">{children}</section>,
+    section: ({ children, ...props }) =>
+      'data-footnotes' in props ? (
+        <section data-footnotes className="mt-12 border-t border-bg-elevated pt-5">
+          {children}
+        </section>
+      ) : (
+        <section className="space-y-5">{children}</section>
+      ),
     ...components,
   };
 }

@@ -58,3 +58,60 @@ body {
   font-family: Arial, Helvetica, sans-serif;
   container-type: inline-size;
 }
+
+/* Footnotes (GFM): grey by default, *emphasis* turns a span white */
+sup a[data-footnote-ref] {
+  font-family: var(--font-code);
+  font-size: 11px;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+sup a[data-footnote-ref]::before {
+  content: '[';
+}
+
+sup a[data-footnote-ref]::after {
+  content: ']';
+}
+
+section[data-footnotes] {
+  color: var(--muted);
+  font-size: 0.9rem;
+  line-height: 1.6;
+}
+
+section[data-footnotes] > p:first-child {
+  margin-bottom: 0.75rem;
+  font-family: var(--font-code);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+section[data-footnotes] ol {
+  display: grid;
+  gap: 0.5rem;
+  margin-left: 2.1rem;
+}
+
+section[data-footnotes] li::marker {
+  font-family: var(--font-code);
+  font-size: 12px;
+  color: var(--primary);
+}
+
+section[data-footnotes] em {
+  color: var(--fg-soft);
+  font-style: normal;
+}
+
+section[data-footnotes] strong {
+  color: var(--foreground);
+}
+
+section[data-footnotes] a[data-footnote-backref] {
+  margin-left: 0.4rem;
+  text-decoration: none;
+}

@@ -32,6 +32,7 @@ const withMDX = createMDX({
   options: {
     remarkPlugins: ['remark-gfm', 'remark-frontmatter'],
     rehypePlugins: ['rehype-mdx-code-props', 'rehype-unwrap-images'],
+    remarkRehypeOptions: { footnoteLabelTagName: 'p' },
   },
 });
 
