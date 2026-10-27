@@ -15,12 +15,13 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
     h4: ({ children }) => <Heading level={4}>{children}</Heading>,
     h5: ({ children }) => <Heading level={5}>{children}</Heading>,
     h6: ({ children }) => <Heading level={6}>{children}</Heading>,
-    p: ({ children }) => <p>{children}</p>,
-    a: ({ children, href, id }) => (
+    p: ({ children, id }) => <p id={id}>{children}</p>,
+    a: ({ children, href, id, ...rest }) => (
       <a
         id={id}
         href={href}
         className="font-medium text-primary underline-offset-4 transition-opacity hover:underline hover:opacity-80"
+        {...rest}
       >
         {children}
       </a>

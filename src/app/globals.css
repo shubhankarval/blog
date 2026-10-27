@@ -60,19 +60,21 @@ body {
 }
 
 /* Footnotes (GFM): grey by default, *emphasis* turns a span white */
+/* --font-code lives in @theme inline, so it isn't a runtime variable */
+
 sup a[data-footnote-ref] {
-  font-family: var(--font-code);
+  font-family: var(--font-consolas), monospace;
   font-size: 11px;
   font-weight: 600;
   text-decoration: none;
 }
 
 sup a[data-footnote-ref]::before {
-  content: '[';
+  content: 'I';
 }
 
 sup a[data-footnote-ref]::after {
-  content: ']';
+  content: '1';
 }
 
 section[data-footnotes] {
@@ -83,7 +85,7 @@ section[data-footnotes] {
 
 section[data-footnotes] > p:first-child {
   margin-bottom: 0.75rem;
-  font-family: var(--font-code);
+  font-family: var(--font-consolas), monospace;
   font-size: 11px;
   font-weight: 600;
   letter-spacing: 0.1em;
@@ -93,25 +95,23 @@ section[data-footnotes] > p:first-child {
 section[data-footnotes] ol {
   display: grid;
   gap: 0.5rem;
-  margin-left: 2.1rem;
+  margin-left: 0;
+  list-style: none;
+  counter-reset: fn;
 }
 
-section[data-footnotes] li::marker {
-  font-family: var(--font-code);
+section[data-footnotes] li {
+  position: relative;
+  padding-left: 2.1rem;
+  counter-increment: fn;
+}
+
+section[data-footnotes] li::before {
+  content: '[' counter(fn) ']';
+  position: absolute;
+  left: 0;
+  font-family: var(--font-consolas), monospace;
   font-size: 12px;
+  font-weight: 600;
   color: var(--primary);
-}
-
-section[data-footnotes] em {
-  color: var(--fg-soft);
-  font-style: normal;
-}
-
-section[data-footnotes] strong {
-  color: var(--foreground);
-}
-
-section[data-footnotes] a[data-footnote-backref] {
-  margin-left: 0.4rem;
-  text-decoration: none;
 }
