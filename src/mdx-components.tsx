@@ -2,7 +2,7 @@ import type { MDXComponents } from 'mdx/types';
 import Heading from '@components/mdx/Heading';
 import Callout from '@components/mdx/Callout';
 import CodeRenderer from '@components/mdx/CodeRenderer';
-import Image from '@components/mdx/Image';
+import Figure from '@components/mdx/Figure';
 import Quote from '@components/mdx/Quote';
 import Summary from '@components/mdx/Summary';
 
@@ -33,8 +33,8 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
       </ul>
     ),
     hr: () => <hr className="text-bg-elevated" />,
-    img: ({ src, alt }) => <Image src={src} alt={alt} />,
-    Image,
+    img: ({ src, alt }) => <Figure src={src} alt={alt} />,
+    Figure,
     Callout,
     Summary,
     pre: (props) => <CodeRenderer {...props} />,
