@@ -71,7 +71,7 @@ export default async function Page({ params }: { params: Promise<{ slug: string 
     <TocProvider items={toc}>
       <div className="space-y-6">
         <TocBar variant="top" className="md:hidden" />
-        <Header />
+        <Header crumb={slug} />
         <div className="relative">
           <div className="space-y-4.5">
             <PostHeader
