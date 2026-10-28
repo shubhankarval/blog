@@ -9,9 +9,10 @@ export type PostMeta = {
   slug: string;
   title: string;
   createdAt: string;
-  updatedAt: string;
+  updatedAt?: string;
   readingTime: number;
   description: string;
+  label?: string;
   tags: string[];
 };
 
@@ -44,14 +45,15 @@ function buildCache() {
       updatedAt: data.updatedAt,
       readingTime: Math.round(stats.minutes),
       description: data.description,
+      label: data.label,
       tags: data.tags,
     });
   }
 
   // Sort by newest first
   posts.sort((a, b) => {
-    const dateA = new Date(a.updatedAt);
-    const dateB = new Date(b.updatedAt);
+    const dateA = new Date(a.updatedAt ?? a.createdAt);
+    const dateB = new Date(b.updatedAt ?? b.createdAt);
     return dateB.getTime() - dateA.getTime();
   });
   cachedPosts = posts;

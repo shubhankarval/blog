@@ -30,7 +30,7 @@ export default function Home() {
             key={post.slug}
             link={post.slug}
             title={post.title}
-            date={post.updatedAt}
+            date={post.updatedAt ?? post.createdAt}
             time={post.readingTime}
             desc={post.description}
             tags={post.tags}

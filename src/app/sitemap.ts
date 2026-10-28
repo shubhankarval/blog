@@ -8,13 +8,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
   return [
     {
       url: SITE_URL,
-      lastModified: posts[0] ? new Date(posts[0].updatedAt) : new Date(),
+      lastModified: posts[0] ? new Date(posts[0].updatedAt ?? posts[0].createdAt) : new Date(),
       changeFrequency: 'weekly',
       priority: 1,
     },
     ...posts.map((post) => ({
       url: `${SITE_URL}/${post.slug}`,
-      lastModified: new Date(post.updatedAt),
+      lastModified: new Date(post.updatedAt ?? post.createdAt),
       changeFrequency: 'monthly' as const,
       priority: 0.8,
     })),

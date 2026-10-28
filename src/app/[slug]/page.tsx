@@ -4,8 +4,8 @@ import { notFound } from 'next/navigation';
 import { getAllPosts, getPostBySlug } from '@lib/posts';
 import { getTocBySlug } from '@lib/toc';
 import { toIsoDate } from '@lib/utils';
-import Meta from '@components/mdx/Meta';
 import Header from '@components/Header';
+import PostHeader from '@components/mdx/PostHeader';
 import TocProvider from '@components/toc/TocProvider';
 import TocRail from '@components/toc/TocRail';
 import TocBar from '@components/toc/TocBar';
@@ -45,7 +45,7 @@ export async function generateMetadata({
       description: post.description,
       url: `/${slug}`,
       publishedTime: toIsoDate(post.createdAt),
-      modifiedTime: toIsoDate(post.updatedAt),
+      modifiedTime: toIsoDate(post.updatedAt ?? post.createdAt),
       tags: post.tags,
     },
     twitter: {
@@ -74,10 +74,13 @@ export default async function Page({ params }: { params: Promise<{ slug: string 
         <Header />
         <div className="relative">
           <div className="space-y-4.5">
-            <Meta
+            <PostHeader
               title={frontmatter.title}
-              time={frontmatter.readingTime}
-              date={frontmatter.updatedAt}
+              description={frontmatter.description}
+              label={frontmatter.label}
+              createdAt={frontmatter.createdAt}
+              updatedAt={frontmatter.updatedAt}
+              readingTime={frontmatter.readingTime}
               tags={frontmatter.tags}
             />
             <TocBar variant="inline" className="hidden md:block xl:hidden" />
