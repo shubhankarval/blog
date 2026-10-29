@@ -15,7 +15,7 @@ interface PostProps {
 
 export default function Post({ title, link, date, time, desc, label, tags }: PostProps) {
   return (
-    <Link className="group flex flex-col gap-2 py-6.5 first:py-0 last:pb-0" href={link}>
+    <Link className="group flex flex-col gap-2 py-6.5 first:pt-0 last:pb-0" href={link}>
       {label && (
         <div>
           <Tag name={label} variant="label" />

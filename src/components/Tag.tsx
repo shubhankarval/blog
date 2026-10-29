@@ -14,10 +14,11 @@ export default function Tag({ name, href, plain, variant = 'tag' }: Readonly<Tag
 
   const className = cn(
     variant === 'label'
-      ? 'inline-block rounded-md bg-primary/10 px-1.75 py-px font-mono text-[0.65rem] font-bold tracking-wide text-primary uppercase'
-      : 'inline-block bg-code rounded-md px-2 py-0.5 font-mono text-xs',
-    plain ? 'text-fg-soft' : toneText[tone],
-    !plain && toneBg[tone],
+      ? 'inline-block rounded-sm bg-primary/10 px-1.75 py-px font-mono text-[0.65rem] font-bold tracking-wide text-primary uppercase'
+      : cn(
+          'inline-block rounded-sm px-2 py-0.5 font-mono text-xs',
+          plain ? 'text-fg-soft bg-code' : cn(toneText[tone], toneBg[tone])
+        ),
     href && 'hover:brightness-125'
   );
   if (href) {
