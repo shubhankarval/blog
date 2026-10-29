@@ -32,3 +32,11 @@ export const toneBorder: Record<Tone, string> = {
   warning: 'border-accent-3/45',
   danger: 'border-accent-4/45',
 };
+
+const TAG_TONES: Tone[] = ['info', 'success', 'warning', 'danger'];
+
+// Stable per-name hash so a tag keeps its color on every card and page.
+export function toneForTag(tag: string): Tone {
+  const hash = [...tag].reduce((h, c) => (h * 33) ^ (c.codePointAt(0) ?? 0), 5381) >>> 0;
+  return TAG_TONES[hash % TAG_TONES.length];
+}

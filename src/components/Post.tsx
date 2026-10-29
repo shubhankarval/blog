@@ -1,6 +1,7 @@
 import Link from 'next/link';
 
-import { formatDate, cn } from '@lib/utils';
+import { formatDate } from '@lib/utils';
+import Tag from '@components/Tag';
 
 interface PostProps {
   title: string;
@@ -10,9 +11,6 @@ interface PostProps {
   desc: string;
   tags: string[];
 }
-
-const accentText = ['text-accent-1', 'text-accent-2', 'text-accent-3', 'text-accent-4'];
-const accentBg = ['bg-accent-1/10', 'bg-accent-2/10', 'bg-accent-3/10', 'bg-accent-4/10'];
 
 export default function Post({ title, link, date, time, desc, tags }: PostProps) {
   return (
@@ -25,17 +23,8 @@ export default function Post({ title, link, date, time, desc, tags }: PostProps)
       </div>
       <p className="text-sm md:text-base">{desc}</p>
       <div className="flex flex-wrap gap-1.5">
-        {tags.map((tag, i) => (
-          <span
-            key={`${tag}-${i}`}
-            className={cn(
-              'rounded-md bg-code px-2 py-0.5 font-mono text-xs',
-              accentText[i % 4],
-              accentBg[i % 4]
-            )}
-          >
-            {tag}
-          </span>
+        {tags.map((tag) => (
+          <Tag key={tag} name={tag} />
         ))}
       </div>
     </Link>

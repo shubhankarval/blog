@@ -1,5 +1,7 @@
 import { LuClock } from 'react-icons/lu';
-import { formatDate } from '@/lib/utils';
+
+import { formatDate } from '@lib/utils';
+import Tag from '@components/Tag';
 
 interface PostHeaderProps {
   title: string;
@@ -54,9 +56,7 @@ export default function PostHeader({
 
       <div className="flex flex-wrap gap-1.5">
         {tags.map((tag) => (
-          <span key={tag} className="rounded-md bg-code px-2 py-0.5 font-mono text-xs text-fg-soft">
-            {tag}
-          </span>
+          <Tag key={tag} name={tag} />
         ))}
       </div>
     </header>
