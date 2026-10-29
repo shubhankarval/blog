@@ -26,11 +26,7 @@ export default function PostHeader({
 
   return (
     <header className="mb-12 space-y-3">
-      {label && (
-        <span className="inline-block rounded-sm bg-primary/10 px-1.75 py-px font-mono text-[0.65rem] font-bold tracking-wide text-primary uppercase">
-          {label}
-        </span>
-      )}
+      {label && <Tag name={label} variant="label" />}
 
       <h1 className="text-3xl leading-tight font-semibold sm:text-4xl">{title}</h1>
 

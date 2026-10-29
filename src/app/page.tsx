@@ -24,7 +24,7 @@ export default function Home() {
           built along the way.
         </p>
       </header>
-      <div className="mt-14 space-y-10 md:space-y-15">
+      <div className="mt-14 divide-y divide-bg-elevated">
         {posts.map((post) => (
           <Post
             key={post.slug}
@@ -33,6 +33,7 @@ export default function Home() {
             date={post.updatedAt ?? post.createdAt}
             time={post.readingTime}
             desc={post.description}
+            label={post.label}
             tags={post.tags}
           />
         ))}

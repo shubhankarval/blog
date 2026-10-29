@@ -6,17 +6,20 @@ interface TagProps {
   name: string;
   href?: string;
   plain?: boolean;
+  variant?: 'tag' | 'label';
 }
 
-export default function Tag({ name, href, plain }: Readonly<TagProps>) {
+export default function Tag({ name, href, plain, variant = 'tag' }: Readonly<TagProps>) {
   const tone = toneForTag(name);
 
   const className = cn(
-    'inline-block rounded-md px-2 py-0.5 font-mono text-xs',
-    plain ? 'text-fg-soft' : cn(toneText[tone], toneBg[tone]),
+    variant === 'label'
+      ? 'inline-block rounded-md bg-primary/10 px-1.75 py-px font-mono text-[0.65rem] font-bold tracking-wide text-primary uppercase'
+      : 'inline-block bg-code rounded-md px-2 py-0.5 font-mono text-xs',
+    plain ? 'text-fg-soft' : toneText[tone],
+    !plain && toneBg[tone],
     href && 'hover:brightness-125'
   );
-
   if (href) {
     return (
       <Link href={href} className={className}>
