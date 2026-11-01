@@ -13,6 +13,7 @@ export default function Footer() {
             className="transition-colors hover:text-primary"
             target="_blank"
             rel="noopener noreferrer"
+            aria-label="GitHub"
           >
             <LuGithub size={20} />
           </a>
@@ -21,6 +22,7 @@ export default function Footer() {
             className="transition-colors hover:text-primary"
             target="_blank"
             rel="noopener noreferrer"
+            aria-label="X (Twitter)"
           >
             <FaXTwitter size={20} />
           </a>
@@ -29,6 +31,7 @@ export default function Footer() {
             className="transition-colors hover:text-primary"
             target="_blank"
             rel="noopener noreferrer"
+            aria-label="LinkedIn"
           >
             <LuLinkedin size={20} />
           </a>
