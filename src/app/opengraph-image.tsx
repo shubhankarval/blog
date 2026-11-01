@@ -5,7 +5,7 @@ export const alt = "Shubhankar's Blog";
 export const size = OG_SIZE;
 export const contentType = OG_CONTENT_TYPE;
 
-export default async function Image() {
+export default function Image() {
   return renderOg({
     title: 'my blog.',
     description: SITE_DESCRIPTION,
