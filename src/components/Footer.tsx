@@ -1,4 +1,5 @@
 import { LuGithub, LuLinkedin } from 'react-icons/lu';
+import { FaXTwitter } from 'react-icons/fa6';
 
 export default function Footer() {
   return (
@@ -14,6 +15,14 @@ export default function Footer() {
             rel="noopener noreferrer"
           >
             <LuGithub size={20} />
+          </a>
+          <a
+            href="https://x.com/shubbyink"
+            className="transition-colors hover:text-primary"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <FaXTwitter size={20} />
           </a>
           <a
             href="https://www.linkedin.com/in/shubhankar-valimbe/"
