@@ -15,7 +15,7 @@ export default async function CodeRenderer({ children, lines }: CodeProps) {
 
   const tokens = await codeToTokens(code, {
     lang: lang,
-    theme: 'vitesse-dark',
+    theme: 'nord',
   });
 
   return <Code tokens={structuredClone(tokens)} code={code} lines={lines} />;
